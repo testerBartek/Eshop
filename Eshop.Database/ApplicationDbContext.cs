@@ -1,10 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Eshop.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Eshop.Database
 {
-    class ApplicationDbContext
+    public class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options) 
+        {
+        }
+
+        public DbSet<Product> Products { get; set; }
     }
 }
