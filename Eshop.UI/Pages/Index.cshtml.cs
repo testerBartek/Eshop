@@ -24,12 +24,6 @@ namespace Eshop.UI.Pages
         [BindProperty]
         public ProductViewModel Product { get; set; }
 
-        public class ProductViewModel 
-        {
-            public string Name { get; set; }
-            public string Description { get; set; }
-            public decimal Value { get; set; }
-        }
         public void OnGet()
         {
 
@@ -37,7 +31,7 @@ namespace Eshop.UI.Pages
 
         public async Task<IActionResult> OnPost()
         {
-            await new CreateProduct(_ctx).Do(Product.Name, Product.Description, Product.Value);
+            await new CreateProduct(_ctx).Do(Product);
 
             return RedirectToPage("Index");
         }
