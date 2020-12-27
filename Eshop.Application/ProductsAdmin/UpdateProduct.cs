@@ -21,7 +21,7 @@ namespace Eshop.Application.ProductsAdmin
             await _context.SaveChangesAsync();
         }
 
-    public class ProductViewModel
+        public class ProductViewModel
         {
             public string Name { get; set; }
             public string Description { get; set; }
