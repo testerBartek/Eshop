@@ -5,10 +5,11 @@
 
 <div id="app">
 
-    <button v-on:click="getProducts">Get Products</button>
     <div>
-        <p v-for="product in products">
-            {{product.id}} - {{product.name}} - {{product.description}}
+        <p v-for="(product, index) in products">
+            {{product.id}} - {{product.name}}
+            <button @@click="editProduct(product.id, index)">Edit</button>
+            <button @@click="deleteProduct(product.id, index)">Remove</button>
         </p>
     </div>
 
@@ -16,7 +17,8 @@
         <input v-model="productModel.name" />
         <input v-model="productModel.description" />
         <input class="input" v-model.number="productModel.value" />
-        <button @@click="createProduct">Create Product</button>
+        <button @@click="createProduct" v-if="!productModel.id">Create Product</button>
+        <button @@click="updateProduct" v-else>Update Product</button>
     </div>
 </div>
 

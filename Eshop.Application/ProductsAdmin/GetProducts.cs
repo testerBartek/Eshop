@@ -20,7 +20,6 @@ namespace Eshop.Application.ProductsAdmin
             {
                 Id = x.Id,
                 Name = x.Name,
-                Description = x.Description,
                 Value = x.Value,
             });
 
@@ -28,7 +27,6 @@ namespace Eshop.Application.ProductsAdmin
         {
             public int Id { get; set; }
             public string Name { get; set; }
-            public string Description { get; set; }
             public decimal Value { get; set; }
         }
     }
