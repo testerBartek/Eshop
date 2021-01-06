@@ -1,54 +1,6 @@
-﻿Vue.component('product-manager', {
-    template: `<div>  
-            <div v-if="!editing">
-                <button class="button" @click="newProduct">Add New Product</button>
-                <table class="table">
-                    <tr>
-                        <th>Id</th>
-                        <th>Product</th>
-                        <th>Value</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr v-for="(product, index) in products">
-                        <td>{{product.id}}</td>
-                        <td>{{product.name}}</td>
-                        <td>{{product.value}}</td>
-                        <td><button @click="editProduct(product.id, index)">Edit</button></td>
-                        <td><button @click="deleteProduct(product.id, index)">Remove</button></td>
-                    </tr>
-                </table>
-            </div>
-
-            <div v-else>
-                <div class="field">
-                    <label class="label">Product Name</label>
-                    <div class="control">
-                        <input class="input" v-model="productModel.name" />
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Product Description</label>
-                    <div class="control">
-                        <input class="input" v-model="productModel.description" />
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Value</label>
-                    <div class="control">
-                        <input class="input" v-model.number="productModel.value" />
-                    </div>
-                </div>
-                
-                <button class="button is-success" @click="createProduct" v-if="!productModel.id">Create Product</button>
-                <button class="button is-warning" @click="updateProduct" v-else>Update Product</button>
-                <button class="button" @click="cancel">Cancel</button>
-            </div>
-           </div>`,
-    data() {
-        return {
+﻿var app = new Vue({
+    el: '#app',
+    data: {
             editing: false,
             loading: false,
             objectIndex: 0,
@@ -58,8 +10,7 @@
                 description: "Product Description",
                 value: 1.99
             },
-                products: []
-        }
+            products: []
     },
     mounted() {
         this.getProducts();
