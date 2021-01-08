@@ -38,9 +38,9 @@ namespace Eshop.Application.StockAdmin
         }
         public class Request
         {
+            public int ProductId { get; set; }
             public string Description { get; set; }
             public int Qty { get; set; }
-            public int ProductId { get; set; }
         }
 
         public class Response

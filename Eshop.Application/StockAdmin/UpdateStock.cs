@@ -20,11 +20,10 @@ namespace Eshop.Application.StockAdmin
         {
             var stocks = new List<Stock>();
 
-            foreach(var stock in request.Stock)
+            foreach (var stock in request.Stock)
             {
                 stocks.Add(new Stock
                 {
-
                     Id = stock.Id,
                     Description = stock.Description,
                     Qty = stock.Qty,
@@ -45,9 +44,10 @@ namespace Eshop.Application.StockAdmin
         public class StockViewModel
         {
             public int Id { get; set; }
+            public int ProductId { get; set; }
             public string Description { get; set; }
             public int Qty { get; set; }
-            public int ProductId { get; set; }
+
         }
 
         public class Request
