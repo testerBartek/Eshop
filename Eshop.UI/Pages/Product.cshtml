@@ -19,8 +19,9 @@
                 }
             </select>
             <label>Qty:</label>
-            <input asp-for="CartViewModel.Qty"/>
+            <input asp-for="CartViewModel.Qty" />
             <button type="submit">Submit</button>
         </form>
     </div>
 </div>
+@await Component.InvokeAsync("Cart")
