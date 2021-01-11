@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,9 @@ namespace Eshop.UI
                 options.Cookie.Name = "Cart";
                 options.Cookie.MaxAge = TimeSpan.FromDays(365);
             });
+
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
