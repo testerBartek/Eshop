@@ -13,7 +13,6 @@ namespace Eshop.Domain.Models
 
 
         public ICollection<Stock> Stock { get; set; }
-        public ICollection<OrderProduct> OrderProducts { get; set; }
 
     }
 }

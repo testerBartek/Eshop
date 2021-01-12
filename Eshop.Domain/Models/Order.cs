@@ -23,7 +23,7 @@ namespace Eshop.Domain.Models
         public string PostCode { get; set; }
 
 
-        public ICollection<OrderProduct> OrderProducts { get; set; }
+        public ICollection<OrderStock> OrderStocks { get; set; }
 
     }
 }
