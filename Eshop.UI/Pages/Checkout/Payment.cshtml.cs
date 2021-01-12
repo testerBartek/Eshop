@@ -42,7 +42,7 @@ namespace Eshop.UI.Pages.Checkout
             var customers = new CustomerService();
             var charges = new ChargeService();
 
-            var CartOrder = new GetOrder(HttpContext.Session, _ctx).Do();
+            var CartOrder = new Application.Cart.GetOrder(HttpContext.Session, _ctx).Do();
 
             var customer = customers.Create(new CustomerCreateOptions
             {
