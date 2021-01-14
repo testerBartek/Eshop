@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Eshop.Application.Products
 {
@@ -16,24 +17,46 @@ namespace Eshop.Application.Products
             _ctx = ctx;
         }
 
-        public ProductViewModel Do(string name) =>
-            _ctx.Products
-            .Include(x => x.Stock)
-            .Where(x => x.Name == name)
-            .Select(x => new ProductViewModel
-            {
-                Name = x.Name,
-                Description = x.Description,
-                Value = $"{x.Value.ToString("N2")} PLN", //1100.50 => 1,100.50 PLN
+        public async Task<ProductViewModel> Do(string name)
+        {
+            var stocksOnHold = _ctx.StockOnHolds.Where(x => x.ExpiryDate < DateTime.Now).ToList();
 
-                Stock = x.Stock.Select(y => new StockViewModel
+            if (stocksOnHold.Count > 0)
+            {
+               // var stockToReturn = _ctx.Stock.Where(x => stocksOnHold.Any(y => y.StockId == x.Id)).ToList();
+
+                var stockIds = stocksOnHold.Select(x => x.StockId).ToList();
+                var stockToReturn = _ctx.Stock.Where(x => stockIds.Contains(x.Id));
+                
+
+                foreach (var stock in stockToReturn)
                 {
-                    Id = y.Id,
-                    Description = y.Description,
-                    InStock = y.Qty > 0
+                    stock.Qty = stock.Qty + stocksOnHold.FirstOrDefault(x => x.StockId == stock.Id).Qty;
+                }
+
+                _ctx.StockOnHolds.RemoveRange(stocksOnHold);
+
+                await _ctx.SaveChangesAsync();
+            }
+
+            return _ctx.Products
+                .Include(x => x.Stock)
+                .Where(x => x.Name == name)
+                .Select(x => new ProductViewModel
+                {
+                    Name = x.Name,
+                    Description = x.Description,
+                    Value = $"{x.Value.ToString("N2")} PLN", //1100.50 => 1,100.50 PLN
+
+                    Stock = x.Stock.Select(y => new StockViewModel
+                    {
+                        Id = y.Id,
+                        Description = y.Description,
+                        InStock = y.Qty > 0
+                    })
                 })
-            })
-            .FirstOrDefault();
+                .FirstOrDefault();
+        }
 
         public class ProductViewModel
         {
