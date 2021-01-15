@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Eshop.Application.Cart;
 using Eshop.Application.Orders;
 using Eshop.Database;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
@@ -58,9 +59,12 @@ namespace Eshop.UI.Pages.Checkout
                 Customer = customer.Id
             });
 
+            var sessionId = HttpContext.Session.Id;
+
             await new CreateOrder(_ctx).Do(new CreateOrder.Request
             {
                 StripeReference = charge.OrderId,
+                SessionId = sessionId,
 
                 FirstName = CartOrder.CustomerInformation.FirstName,
                 LastName = CartOrder.CustomerInformation.LastName,
@@ -78,6 +82,12 @@ namespace Eshop.UI.Pages.Checkout
                 }).ToList()
             });
 
+//TODO: Delete the cookies after purchase, but I need to think about clear the session in memory.
+//
+//            Response.Cookies.Delete("Cart", new CookieOptions()
+//            {
+//                Secure = true,
+//            });
 
             return RedirectToPage("/Index");
         }
