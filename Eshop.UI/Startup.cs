@@ -2,6 +2,7 @@ using Eshop.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,6 +29,25 @@ namespace Eshop.UI
         {
             //database connection
             IServiceCollection serviceCollections = services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["DefaultConnection"]));
+
+
+
+            // Identity
+            services.AddIdentityCore<IdentityUser>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            })
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            // Authorization
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy => policy.RequireClaim("Admin"));
+                options.AddPolicy("Manager", policy => policy.RequireClaim("Manager"));
+            });
 
             // .cshtml refreshing
             services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -67,6 +87,8 @@ namespace Eshop.UI
             app.UseAuthorization();
 
             app.UseSession();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
