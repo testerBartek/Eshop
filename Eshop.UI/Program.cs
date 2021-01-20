@@ -28,7 +28,7 @@ namespace Eshop.UI
 
                     context.Database.EnsureCreated();
 
-                    if (context.Users.Any())
+                    if (!context.Users.Any())
                     {
                         var adminUser = new IdentityUser()
                         {

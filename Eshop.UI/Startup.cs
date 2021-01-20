@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,33 +27,46 @@ namespace Eshop.UI
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
+
         {
+
             //database connection
             IServiceCollection serviceCollections = services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["DefaultConnection"]));
 
 
-
             // Identity
-            services.AddIdentityCore<IdentityUser>(options =>
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
             })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Accounts/Login";
+            });
 
             // Authorization
             services.AddAuthorization(options =>
-            {
-                options.AddPolicy("Admin", policy => policy.RequireClaim("Admin"));
-                options.AddPolicy("Manager", policy => policy.RequireClaim("Manager"));
-            });
+               {
+                   options.AddPolicy("Admin", policy => policy.RequireClaim("Role", "Admin"));
+                   options.AddPolicy("Manager", policy => policy.RequireClaim("Role", "Manager"));
+               });
+
 
             // .cshtml refreshing
-            services.AddRazorPages().AddRazorRuntimeCompilation();
 
-            services.AddRazorPages();
+            services
+                    .AddRazorPages()
+                    .AddRazorPagesOptions(options =>
+                    {
+                        options.Conventions.AuthorizeFolder("/Admin");
+                    })
+                    .AddRazorRuntimeCompilation();
+
 
             services.AddSession(options =>
             {
@@ -84,17 +98,17 @@ namespace Eshop.UI
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseSession();
 
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
             });
+
         }
     }
 }
