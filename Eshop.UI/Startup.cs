@@ -76,6 +76,9 @@ namespace Eshop.UI
 
             StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
 
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -103,11 +106,15 @@ namespace Eshop.UI
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseMvcWithDefaultRoute();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
             });
+
 
         }
     }
