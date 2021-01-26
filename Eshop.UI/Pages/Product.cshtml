@@ -3,25 +3,74 @@
 @{
 }
 
+<div class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half">
+                    <figure class="image">
+                        <img src="~/images/tshirt-red.jpg" />
+                    </figure>
+                </div>
+                <div class="column is-half">
+                    <section class="content">
+                        <p class="title">@Model.Product.Name</p>
+                        <p class="subtitle">@Model.Product.Description</p>
+                        <p>
 
-<div>
-    <p>@Model.Product.Name</p>
-    <p>@Model.Product.Description</p>
-    <p>@Model.Product.Value</p>
-    <div>
-        <form method="post">
+                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                        </p>
+                        <footer>
+                            <form method="post">
 
-            <label>Stock</label>
-            <select asp-for="CartViewModel.StockId">
-                @foreach (var s in Model.Product.Stock)
-                {
-                    <option value="@s.Id">@s.Description</option>
-                }
-            </select>
-            <label>Qty:</label>
-            <input asp-for="CartViewModel.Qty" />
-            <button type="submit">Submit</button>
-        </form>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Size</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field is-narrow">
+                                            <div class="control">
+                                                <div class="select is-fullwidth">
+                                                    <select asp-for="CartViewModel.StockId">
+                                                        @foreach (var s in Model.Product.Stock)
+                                                        {
+                                                            <option value="@s.Id">@s.Description</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Qty</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field is-narrow">
+                                            <div class="control">
+                                                <input class="input" asp-for="CartViewModel.Qty" value="1"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label"></label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field is-narrow">
+                                            <div class="control">
+                                                <button class="button is-success" type="submit">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </footer>
+                    </section>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-@await Component.InvokeAsync("Cart")
