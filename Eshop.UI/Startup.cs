@@ -1,3 +1,4 @@
+using Eshop.Application.UsersAdmin;
 using Eshop.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -68,6 +69,7 @@ namespace Eshop.UI
                     .AddRazorPagesOptions(options =>
                     {
                         options.Conventions.AuthorizeFolder("/Admin");
+                        options.Conventions.AuthorizePage("/Admin/ConfigureUsers", "Admin");
                     })
                     .AddRazorRuntimeCompilation();
 
@@ -82,7 +84,7 @@ namespace Eshop.UI
 
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
-
+            services.AddTransient<CreateUser>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,5 +1,6 @@
 ﻿using Eshop.Application.ProductsAdmin;
 using Eshop.Database;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace Eshop.UI.Controllers
 {
     [Route("[controller]")]
+    [Authorize(Policy = "Manager")]
     public class ProductsController : Controller
     {
         private ApplicationDbContext _ctx;
