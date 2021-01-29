@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Eshop.Application.Orders
+namespace Eshop.Application.OrdersAdmin
 {
     public class GetOrder
     {
@@ -18,7 +18,9 @@ namespace Eshop.Application.Orders
 
         public class Response
         {
+            public int Id { get; set; }
             public string OrderRef { get; set; }
+            public string StripeReference { get; set; }
 
             public string FirstName { get; set; }
             public string LastName { get; set; }
@@ -31,7 +33,7 @@ namespace Eshop.Application.Orders
             public string PostCode { get; set; }
 
             public IEnumerable<Product> Products { get; set; }
-
+            
             public string TotalValue { get; set; }
         }
 
@@ -44,15 +46,17 @@ namespace Eshop.Application.Orders
             public string StockDescription { get; set; }
         }
 
-        public Response Do(string reference) =>
+        public Response Do(int id) =>
             _ctx.Orders
-                .Where(x => x.OrderRef == reference)
+                .Where(x => x.Id == id)
                 .Include(x => x.OrderStocks)
                 .ThenInclude(x => x.Stock)
                 .ThenInclude(x => x.Product)
                 .Select(x => new Response
                 {
+                    Id = x.Id,
                     OrderRef = x.OrderRef,
+                    StripeReference = x.StripeReference,
 
                     FirstName = x.FirstName,
                     LastName = x.LastName,

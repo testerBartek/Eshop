@@ -1,4 +1,5 @@
-﻿using Eshop.Database;
+﻿using Eshop.Application.OrdersAdmin;
+using Eshop.Database;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,6 +20,13 @@ namespace Eshop.UI.Controllers
             _ctx = ctx;
         }
 
-        //TODO: Order Management API
+        [HttpGet("")]
+        public IActionResult GetOrders(int status) => Ok(new GetOrders(_ctx).Do(status));
+
+        [HttpGet("{id}")]
+        public IActionResult GetOrder(int id) => Ok(new GetOrder(_ctx).Do(id));
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateOrder(int id) => Ok((await new UpdateOrder(_ctx).Do(id)));
     }
 }
