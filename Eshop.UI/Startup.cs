@@ -84,7 +84,7 @@ namespace Eshop.UI
 
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
-            services.AddTransient<CreateUser>();
+            services.AddApplicationServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
