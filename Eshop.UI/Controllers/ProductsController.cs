@@ -2,9 +2,6 @@
 using Eshop.Database;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Eshop.UI.Controllers
@@ -27,7 +24,7 @@ namespace Eshop.UI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetProduct(int id) => Ok(new GetProduct(_ctx).Do(id));
 
-        [HttpPost("")] 
+        [HttpPost("")]
         public async Task<IActionResult> CreateProduct([FromBody] CreateProduct.Request request) => Ok((await new CreateProduct(_ctx).Do(request)));
 
         [HttpDelete("{id}")]

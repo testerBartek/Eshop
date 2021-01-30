@@ -1,19 +1,13 @@
-using Eshop.Application.UsersAdmin;
 using Eshop.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stripe;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Eshop.UI
 {
@@ -54,9 +48,9 @@ namespace Eshop.UI
             services.AddAuthorization(options =>
                {
                    options.AddPolicy("Admin", policy => policy.RequireClaim("Role", "Admin"));
-              //     options.AddPolicy("Manager", policy => policy.RequireClaim("Role", "Manager"));
+                   //     options.AddPolicy("Manager", policy => policy.RequireClaim("Role", "Manager"));
                    options.AddPolicy("Manager", policy => policy
-                        .RequireAssertion(context => 
+                        .RequireAssertion(context =>
                             context.User.HasClaim("Role", "Manager")
                             || context.User.HasClaim("Role", "Admin")));
                });

@@ -1,9 +1,7 @@
 ﻿using Eshop.Database;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
 
 namespace Eshop.Application.StockAdmin
 {

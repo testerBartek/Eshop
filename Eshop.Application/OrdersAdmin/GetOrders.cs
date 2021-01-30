@@ -1,9 +1,7 @@
 ﻿using Eshop.Database;
 using Eshop.Domain.Enums;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Eshop.Application.OrdersAdmin
 {

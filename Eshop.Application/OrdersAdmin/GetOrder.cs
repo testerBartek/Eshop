@@ -1,9 +1,7 @@
 ﻿using Eshop.Database;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Eshop.Application.OrdersAdmin
 {
@@ -33,7 +31,7 @@ namespace Eshop.Application.OrdersAdmin
             public string PostCode { get; set; }
 
             public IEnumerable<Product> Products { get; set; }
-            
+
             public string TotalValue { get; set; }
         }
 

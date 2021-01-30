@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 namespace Eshop.UI.Pages.Accounts
 {
@@ -29,7 +26,7 @@ namespace Eshop.UI.Pages.Accounts
         public async Task<IActionResult> OnPost()
         {
             var result = await _signInManager.PasswordSignInAsync(Input.Username, Input.Passowrd, false, false);
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 return RedirectToPage("/Admin/Index");
             }

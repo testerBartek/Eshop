@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Eshop.Application.Cart;
 using Eshop.Application.OrdersAdmin;
 using Eshop.Database;
@@ -10,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Stripe;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Eshop.UI.Pages.Checkout
 {
@@ -18,7 +16,7 @@ namespace Eshop.UI.Pages.Checkout
         public string PublicKey { get; }
         private ApplicationDbContext _ctx;
 
-        public PaymentModel (IConfiguration config, ApplicationDbContext ctx)
+        public PaymentModel(IConfiguration config, ApplicationDbContext ctx)
         {
             PublicKey = config["Stripe:PublicKey"].ToString();
             _ctx = ctx;
@@ -82,12 +80,12 @@ namespace Eshop.UI.Pages.Checkout
                 }).ToList()
             });
 
-//TODO: Delete the cookies after purchase, but I need to think about clear the session in memory.
-//
-//            Response.Cookies.Delete("Cart", new CookieOptions()
-//            {
-//                Secure = true,
-//            });
+            //TODO: Delete the cookies after purchase, but I need to think about clear the session in memory.
+            //
+            //            Response.Cookies.Delete("Cart", new CookieOptions()
+            //            {
+            //                Secure = true,
+            //            });
 
             return RedirectToPage("/Checkout/PaymentSuccessful");
         }

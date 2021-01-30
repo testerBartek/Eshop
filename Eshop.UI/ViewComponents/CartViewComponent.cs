@@ -1,10 +1,7 @@
 ﻿using Eshop.Application.Cart;
 using Eshop.Database;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Eshop.UI.ViewComponents
 {
@@ -19,7 +16,7 @@ namespace Eshop.UI.ViewComponents
 
         public IViewComponentResult Invoke(string view = "Default")
         {
-            if(view == "Small")
+            if (view == "Small")
             {
                 var totalValue = new GetCart(HttpContext.Session, _ctx).Do().Sum(x => x.RealValue * x.Qty);
                 return View(view, $"{totalValue} PLN");

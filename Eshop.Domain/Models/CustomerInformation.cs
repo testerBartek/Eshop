@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace Eshop.Domain.Models
+﻿namespace Eshop.Domain.Models
 {
     public class CustomerInformation
     {

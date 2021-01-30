@@ -3,10 +3,8 @@ using Eshop.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Eshop.Application.Cart
 {
@@ -51,7 +49,7 @@ namespace Eshop.Application.Cart
                     RealValue = x.Product.Value,
                     StockId = x.Id,
                     Qty = cartList.FirstOrDefault(y => y.StockId == x.Id).Qty,
-                    ImageName =x.Product.ImageName,
+                    ImageName = x.Product.ImageName,
                 })
                 .ToList();
 

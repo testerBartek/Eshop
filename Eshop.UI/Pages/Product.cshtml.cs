@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Eshop.Application.Cart;
+using Eshop.Application.Products;
 using Eshop.Database;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Eshop.Application.Products;
-using Microsoft.AspNetCore.Http;
-using Eshop.Application.Cart;
+using System.Threading.Tasks;
 
 namespace Eshop.UI.Pages
 {

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Eshop.Database;
+﻿using Eshop.Database;
 using Eshop.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Eshop.Application.Cart
 {
@@ -33,7 +32,7 @@ namespace Eshop.Application.Cart
             var stockOnHold = _ctx.StockOnHolds.Where(x => x.SessionId == _session.Id).ToList();
             var stockToHold = _ctx.Stock.Where(x => x.Id == request.StockId).FirstOrDefault();
 
-            if(stockToHold.Qty < request.Qty)
+            if (stockToHold.Qty < request.Qty)
             {
                 //return not enough stock
                 return false;
@@ -56,7 +55,7 @@ namespace Eshop.Application.Cart
 
             stockToHold.Qty = stockToHold.Qty - request.Qty;
 
-            foreach(var stock in stockOnHold)
+            foreach (var stock in stockOnHold)
             {
                 stock.ExpiryDate = DateTime.Now.AddMinutes(20);
             }
@@ -67,7 +66,7 @@ namespace Eshop.Application.Cart
             var cartList = new List<CartProduct>();
             var stringObject = _session.GetString("cart");
 
-            if(!string.IsNullOrEmpty(stringObject))
+            if (!string.IsNullOrEmpty(stringObject))
             {
                 cartList = JsonConvert.DeserializeObject<List<CartProduct>>(stringObject);
             };

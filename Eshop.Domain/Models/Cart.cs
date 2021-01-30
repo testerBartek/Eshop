@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Eshop.Domain.Models
+﻿namespace Eshop.Domain.Models
 {
     public class CartProduct
     {

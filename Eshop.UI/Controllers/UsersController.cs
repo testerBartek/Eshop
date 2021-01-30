@@ -1,12 +1,6 @@
-﻿using Eshop.Application.ProductsAdmin;
-using Eshop.Application.StockAdmin;
-using Eshop.Application.UsersAdmin;
-using Eshop.Database;
+﻿using Eshop.Application.UsersAdmin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Eshop.UI.Controllers

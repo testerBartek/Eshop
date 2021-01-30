@@ -54,11 +54,12 @@ namespace EShop.Application.Cart
 
             var stock = _ctx.Stock.FirstOrDefault(x => x.Id == request.StockId);
 
-            if(request.All)
+            if (request.All)
             {
                 stock.Qty += stockOnHold.Qty;
                 stockOnHold.Qty = 0;
-            }else
+            }
+            else
             {
                 stock.Qty += request.Qty;
                 stockOnHold.Qty -= request.Qty;

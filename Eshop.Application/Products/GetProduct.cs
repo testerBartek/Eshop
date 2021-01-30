@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Eshop.Application.Products
@@ -23,11 +22,11 @@ namespace Eshop.Application.Products
 
             if (stocksOnHold.Count > 0)
             {
-               // var stockToReturn = _ctx.Stock.Where(x => stocksOnHold.Any(y => y.StockId == x.Id)).ToList();
+                // var stockToReturn = _ctx.Stock.Where(x => stocksOnHold.Any(y => y.StockId == x.Id)).ToList();
 
                 var stockIds = stocksOnHold.Select(x => x.StockId).ToList();
                 var stockToReturn = _ctx.Stock.Where(x => stockIds.Contains(x.Id));
-                
+
 
                 foreach (var stock in stockToReturn)
                 {

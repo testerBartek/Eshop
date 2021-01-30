@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Eshop.Application.Cart;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -25,9 +21,9 @@ namespace Eshop.UI.Pages.Checkout
         {
             var information = new GetCustomerInformation(HttpContext.Session).Do();
 
-            if(information == null)
+            if (information == null)
             {
-                if(_env.IsDevelopment())
+                if (_env.IsDevelopment())
                 {
                     CustomerInformation = new AddCustomerInformation.Request
                     {
