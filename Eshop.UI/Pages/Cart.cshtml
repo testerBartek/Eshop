@@ -11,7 +11,11 @@
             {
                 <div class="level" id="product-@product.StockId">
                     <div class="level-item has-text-centered">
-                        <img src="~/images/tshirt-red.jpg" alt="" style="height: 128px;" />
+                            @{
+                                var imagePath = "";
+                                imagePath = @"images/" + product.ImageName;
+                            }
+                            <img src="@imagePath" alt="" style="height: 128px;" />
                     </div>
                     <div class="level-item has-text-centered">
                         <p class="title">

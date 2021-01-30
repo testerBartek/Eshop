@@ -25,8 +25,9 @@ namespace Eshop.Application.Products
                     Description = x.Description,
                     Value = $"{x.Value:N2} PLN", //1100.50 => 1,100.50 PLN
 
+                    StockCount = x.Stock.Sum(y => y.Qty),
 
-                    StockCount = x.Stock.Sum(y => y.Qty)
+                    ImageName = x.ImageName,
                 })
                 .ToList();
 
@@ -36,6 +37,7 @@ namespace Eshop.Application.Products
             public string Description { get; set; }
             public string Value { get; set; }
             public int StockCount { get; set; }
+            public string ImageName { get; set; }
         }
     }
 }

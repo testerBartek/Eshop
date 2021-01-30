@@ -9,7 +9,11 @@
         <article class="media">
             <figure class="media-left">
                 <div class="level-item has-text-centered">
-                    <img src="~/images/tshirt-red.jpg" alt="" style="height: 128px;" />
+                        @{
+                            var imagePath = "";
+                            imagePath = @"/images/" + product.ImageName;
+                        }
+                        <img src="@imagePath" alt="" style="height: 128px;"/>
                 </div>
             </figure>
             <div class="media-content">

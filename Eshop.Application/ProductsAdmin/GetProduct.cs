@@ -22,6 +22,7 @@ namespace Eshop.Application.ProductsAdmin
                 Name = x.Name,
                 Description = x.Description,
                 Value = x.Value,
+                ImageName = x.ImageName,
             })
             .FirstOrDefault();
 
@@ -31,6 +32,7 @@ namespace Eshop.Application.ProductsAdmin
             public string Name { get; set; }
             public string Description { get; set; }
             public decimal Value { get; set; }
+            public string ImageName { get; set; }
         }
     }
 }

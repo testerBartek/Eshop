@@ -47,13 +47,13 @@ namespace Eshop.Application.Products
                     Name = x.Name,
                     Description = x.Description,
                     Value = $"{x.Value.ToString("N2")} PLN", //1100.50 => 1,100.50 PLN
-
                     Stock = x.Stock.Select(y => new StockViewModel
                     {
                         Id = y.Id,
                         Description = y.Description,
-                        Qty = y.Qty
-                    })
+                        Qty = y.Qty,
+                    }),
+                    ImageName = x.ImageName,
                 })
                 .FirstOrDefault();
         }
@@ -64,6 +64,7 @@ namespace Eshop.Application.Products
             public string Description { get; set; }
             public string Value { get; set; }
             public IEnumerable<StockViewModel> Stock { get; set; }
+            public string ImageName { get; set; }
         }
 
         public class StockViewModel
@@ -71,6 +72,7 @@ namespace Eshop.Application.Products
             public int Id { get; set; }
             public string Description { get; set; }
             public int Qty { get; set; }
+            public string ImageName { get; set; }
         }
 
     }

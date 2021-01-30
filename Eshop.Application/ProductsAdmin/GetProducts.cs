@@ -21,6 +21,8 @@ namespace Eshop.Application.ProductsAdmin
                 Id = x.Id,
                 Name = x.Name,
                 Value = x.Value,
+                ImageName = x.ImageName,
+
             });
 
         public class ProductViewModel
@@ -28,6 +30,7 @@ namespace Eshop.Application.ProductsAdmin
             public int Id { get; set; }
             public string Name { get; set; }
             public decimal Value { get; set; }
+            public string ImageName { get; set; }
         }
     }
 }

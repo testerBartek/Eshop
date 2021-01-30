@@ -24,6 +24,7 @@ namespace Eshop.Application.ProductsAdmin
             product.Name = request.Name;
             product.Description = request.Description;
             product.Value = request.Value;
+            product.ImageName = request.ImageName;
 
             await _context.SaveChangesAsync();
             return new Response
@@ -32,6 +33,7 @@ namespace Eshop.Application.ProductsAdmin
                 Name = product.Name,
                 Description = product.Description,
                 Value = product.Value,
+                ImageName = product.ImageName,
             };
         }
 
@@ -41,6 +43,7 @@ namespace Eshop.Application.ProductsAdmin
             public string Name { get; set; }
             public string Description { get; set; }
             public decimal Value { get; set; }
+            public string ImageName { get; set; }
         }
 
         public class Response
@@ -49,6 +52,7 @@ namespace Eshop.Application.ProductsAdmin
             public string Name { get; set; }
             public string Description { get; set; }
             public decimal Value { get; set; }
+            public string ImageName { get; set; }
         }
     }
 }
