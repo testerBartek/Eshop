@@ -89,7 +89,7 @@ namespace Eshop.UI.Pages.Checkout
 //                Secure = true,
 //            });
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Checkout/PaymentSuccessful");
         }
     }
 }
