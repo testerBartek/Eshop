@@ -80,12 +80,8 @@ namespace Eshop.UI.Pages.Checkout
                 }).ToList()
             });
 
-            //TODO: Delete the cookies after purchase, but I need to think about clear the session in memory.
-            //
-            //            Response.Cookies.Delete("Cart", new CookieOptions()
-            //            {
-            //                Secure = true,
-            //            });
+
+
 
             return RedirectToPage("/Checkout/PaymentSuccessful");
         }
