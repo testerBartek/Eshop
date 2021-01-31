@@ -13,18 +13,49 @@
             </ul>
         </div>
         <div v-if="orders.length > 0">
-            <p v-for="order in orders">
-                <a @@click="selectOrder(order.id)">{{order.orderRef}} - {{order.email}}</a>
-            </p>
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>Order Reference</th>
+                    <th>User Email</th>
+                    <th></th>
+                </tr>
+                <tr v-for="order in orders">
+                    <td>{{order.id}}</td>
+                    <td><a @@click="selectOrder(order.id)">{{order.orderRef}}</a></td>
+                    <td>{{order.email}}</td>
+                    <td><button @@click="selectOrder(order.id)">Edit</button></td>
+                </tr>
+            </table>
         </div>
     </div>
     <div v-else>
-        <p>
-            <button @@click="exitOrder()">Exit</button>
-        </p>
-        <p class="title">{{selectedOrder.orderRef}}</p>
-        <p class="subtitle">{{selectedOrder.email}}</p>
-        <button @@click="updateOrder()">Process</button>
+        <div class="field">
+            <button class="button" @@click="exitOrder()">Exit</button>
+        </div>
+        <p class="title">Order</p>
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Order Reference</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{selectedOrder.id}}</td>
+                    <td>{{selectedOrder.orderRef}}</td>
+                    <td>{{selectedOrder.email}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <button class="button is-success" @@click="updateOrder()">Process</button>
+        </div>
     </div>
 </div>
 

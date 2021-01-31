@@ -8,7 +8,8 @@
                 id: 0,
                 name: "Product Name",
                 description: "Product Description",
-                value: 1.99
+                value: 1.99,
+                imageName: "empty-image.jpg",
             },
             products: []
     },
@@ -27,6 +28,7 @@
                         name: product.name,
                         description: product.description,
                         value: product.value,
+                        imageName: product.imageName,
                     };
                 })
                 .catch(err => {

@@ -5,9 +5,23 @@
 
 
 <form method="post">
-
-    <input asp-for="Input.Username" />
-    <input asp-for="Input.Passowrd" />
-    <input type="submit" name="name" value="Sign In" />
-
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                    <div class="field">
+                        <label for="" class="label">Login</label>
+                            <input asp-for="Input.Username" placeholder="Login" class="input" required>
+                    </div>
+                    <div class="field">
+                        <label for="" class="label">Password</label>
+                            <input asp-for="Input.Passowrd" type="password" placeholder="*******" class="input" required>
+                    </div>
+                    <div class="field">
+                        <button class="button is-success" type="submit">
+                            Login
+                        </button>
+                    </div>
+            </div>
+        </div>
+    </div>
 </form>

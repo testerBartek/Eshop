@@ -4,10 +4,20 @@
 }
 
 <div id="app" class="container">
-    <input v-model="username" />
-    <button @@click="createUser()">Create</button>
+    <div class="columns">
+        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+            <div class="field">
+                <label for="" class="label">Add the new Manager</label>
+                <input class="input" type="text" placeholder="username" v-model="username" required />
+            </div>
+            <div class="field">
+                <button @@click="createUser()" class="button is-success" type="submit">
+                    Create
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
-
 
 @section scripts{
     <script src="~/js/admin/users.js"></script>
