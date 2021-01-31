@@ -30,7 +30,7 @@ namespace Eshop.UI.Pages.Checkout
                         FirstName = "A",
                         LastName = "A",
                         Email = "A@a.com",
-                        PhoneNumber = "123",
+                        PhoneNumber = "777555666",
                         Address1 = "A",
                         Address2 = "A",
                         City = "A",

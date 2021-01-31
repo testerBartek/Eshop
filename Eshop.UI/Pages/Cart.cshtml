@@ -1,6 +1,7 @@
 ﻿@page
 @model Eshop.UI.Pages.CartModel
 @{
+
 }
 
 
@@ -28,7 +29,7 @@
                     </p>
                 </div>
                 <div class="level-item">
-                    <div class="columns is-gapless has-text-centered is-mobile is-multiline">
+                    <div class="columns has-text-centered is-mobile is-multiline">
                         <div class="column is-4">
                             <button class="button" type="button"
                                     onclick="removeOneFromCart(event)"
@@ -47,13 +48,17 @@
                                 +
                             </button>
                         </div>
-                        <div class="column is-12">
-                            <a class="has-text-danger"
-                               onclick="removeAllFromCart(event)"
-                               data-stock-id="@product.StockId">
-                                Remove
-                            </a>
-                        </div>
+                        @* TODO: FIX it, it doesn't work after refresh. The product is visible
+                and payment include this item.
+
+            <div class="column is-12">
+                <a class="has-text-danger"
+                   onclick="removeAllFromCart(event)"
+                   data-stock-id="@product.StockId">
+                    Remove
+                </a>
+            </div>
+                        *@
                     </div>
                 </div>
                 <div class="level-item has-text-centered">
@@ -83,6 +88,7 @@
                 .then(res => {
                     var el = document.getElementById("stock-" + stockId);
                     var qty = parseInt(el.innerText);
+                    window.location.reload();
 
                     el.innerText = (qty + 1);
                 })
@@ -97,6 +103,7 @@
                 .then(res => {
                     var el = document.getElementById("stock-" + stockId);
                     var qty = parseInt(el.innerText);
+                    window.location.reload();
 
                     el.innerText = (qty - 1);
                 })

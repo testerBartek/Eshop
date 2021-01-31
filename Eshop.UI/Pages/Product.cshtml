@@ -22,8 +22,9 @@
                         <p class="subtitle">@Model.Product.Description</p>
                         <p>
 
-                            This products aren't on sell. This application is created to learn how to code. If you are interested in this products. I'm sorry.
-                            
+                            This products aren't on sell. This application is created to learn how to code.
+                            If you are interested in this products. I'm sorry.
+
                         </p>
                         <footer>
                             <form method="post">
@@ -56,13 +57,13 @@
                                     <div class="field-body">
                                         <div class="field is-narrow">
                                             <div class="control">
-                                                <input class="input" asp-for="CartViewModel.Qty" value="1"/>
+                                                <input class="input" asp-for="CartViewModel.Qty" value="1" />
                                             </div>
                                             @foreach(var stock in Model.Product.Stock)
                                             {
                                                 if(stock.Qty <= 10)
-                                                { 
-                                                    <p class="help is-danger is-hidden low-stock" id="low-stock-@stock.Id" >
+                                                {
+                                                    <p class="help is-danger is-hidden low-stock" id="low-stock-@stock.Id">
                                                         @(stock.Qty == 0 ? "Out Stock" : $"{stock.Qty} Left" )
                                                     </p>
                                                 }
@@ -74,13 +75,13 @@
                                     <div class="field-label is-normal">
                                         <label class="label"></label>
                                     </div>
-                                    <div class="field-body">
-                                        <div class="field is-narrow">
-                                            <div class="control">
-                                                <button class="button is-success" type="submit">Submit</button>
+                                        <div class="field-body">
+                                            <div class="field is-narrow">
+                                                <div class="control">
+                                                    <button class="button is-success" type="submit">Submit</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </form>
                         </footer>

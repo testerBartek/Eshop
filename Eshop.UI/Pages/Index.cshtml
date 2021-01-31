@@ -14,8 +14,8 @@
                         <a asp-page="Product" asp-route-name="@p.Name.Replace(" ", "-")">
                             <div class="card">
                                 <div class="card-image">
-                                    <figure class="image">
-                                        @{ 
+                                    <figure class="image is-1by1">
+                                        @{
                                             var imagePath = "";
                                             imagePath = @"images/" + p.ImageName;
                                         }
