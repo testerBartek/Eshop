@@ -9,51 +9,57 @@
         <div class="column is-8 is-offset-1">
             @foreach (var product in Model.Cart)
             {
-                <div class="level" id="product-@product.StockId">
-                    <div class="level-item has-text-centered">
-                            @{
-                                var imagePath = "";
-                                imagePath = @"images/" + product.ImageName;
-                            }
-                            <img src="@imagePath" alt="" style="height: 128px;" />
-                    </div>
-                    <div class="level-item has-text-centered">
-                        <p class="title">
-                            @product.Name
-                        </p>
-                    </div>
-                    <div class="level-item">
-                        <div class="columns is-gapless has-text-centered is-mobile is-multiline">
-                            <div class="column is-4">
-                                <button class="button" type="button"
-                                        onclick="removeOneFromCart(event)"
-                                        data-stock-id="@product.StockId">
-                                    -
-                                </button>
-                            </div>
-                            <div class="column is-4 align-self-center" 
-                                 id="stock-@product.StockId">
-                                @product.Qty
-                            </div>
-                            <div class="column is-4">
-                                <button class="button" type="button"
-                                        onclick="addOneToCart(event)"
-                                        data-stock-id="@product.StockId">
-                                    +
-                                </button>
-                            </div>
-                            <div class="column is-12">
-                                <a class="has-text-danger"
-                                    onclick="removeAllFromCart(event)"
-                                    data-stock-id="@product.StockId">Remove
-                                </a>
-                            </div>
+            <div class="level" id="product-@product.StockId">
+                <div class="level-item has-text-centered">
+                    @{
+                        var imagePath = "";
+                        imagePath = @"images/" + product.ImageName;
+                    }
+                    <img src="@imagePath" alt="" style="height: 128px;" />
+                </div>
+                <div class="level-item has-text-centered">
+                    <p class="title">
+                        @product.Name
+                    </p>
+                </div>
+                <div class="level-item has-text-centered">
+                    <p class="subtitle">
+                        @product.Description
+                    </p>
+                </div>
+                <div class="level-item">
+                    <div class="columns is-gapless has-text-centered is-mobile is-multiline">
+                        <div class="column is-4">
+                            <button class="button" type="button"
+                                    onclick="removeOneFromCart(event)"
+                                    data-stock-id="@product.StockId">
+                                -
+                            </button>
+                        </div>
+                        <div class="column is-4 align-self-center"
+                             id="stock-@product.StockId">
+                            @product.Qty
+                        </div>
+                        <div class="column is-4">
+                            <button class="button" type="button"
+                                    onclick="addOneToCart(event)"
+                                    data-stock-id="@product.StockId">
+                                +
+                            </button>
+                        </div>
+                        <div class="column is-12">
+                            <a class="has-text-danger"
+                               onclick="removeAllFromCart(event)"
+                               data-stock-id="@product.StockId">
+                                Remove
+                            </a>
                         </div>
                     </div>
-                    <div class="level-item has-text-centered">
-                        <p>@product.Value</p>
-                    </div>
                 </div>
+                <div class="level-item has-text-centered">
+                    <p>@product.Value</p>
+                </div>
+            </div>
             }
 
             <div class="has-text-right">

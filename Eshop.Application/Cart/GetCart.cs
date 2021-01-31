@@ -26,6 +26,8 @@ namespace Eshop.Application.Cart
             public decimal RealValue { get; set; }
             public int Qty { get; set; }
 
+            public string Description { get; set; }
+
             public int StockId { get; set; }
             public string ImageName { get; set; }
         }
@@ -50,6 +52,7 @@ namespace Eshop.Application.Cart
                     StockId = x.Id,
                     Qty = cartList.FirstOrDefault(y => y.StockId == x.Id).Qty,
                     ImageName = x.Product.ImageName,
+                    Description = x.Description,
                 })
                 .ToList();
 
