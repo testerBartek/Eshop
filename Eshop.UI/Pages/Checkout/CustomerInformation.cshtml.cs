@@ -23,21 +23,21 @@ namespace Eshop.UI.Pages.Checkout
 
             if (information == null)
             {
-                if (_env.IsDevelopment())
-                {
-                    CustomerInformation = new AddCustomerInformation.Request
-                    {
-                        FirstName = "A",
-                        LastName = "A",
-                        Email = "A@a.com",
-                        PhoneNumber = "777555666",
-                        Address1 = "A",
-                        Address2 = "A",
-                        City = "A",
-                        PostCode = "A",
-                    };
-
-                }
+               // if (_env.IsDevelopment())
+               // {
+               //     CustomerInformation = new AddCustomerInformation.Request
+               //     {
+               //         FirstName = "A",
+               //         LastName = "A",
+               //         Email = "A@a.com",
+               //         PhoneNumber = "777555666",
+               //         Address1 = "A",
+               //         Address2 = "A",
+               //         City = "A",
+               //         PostCode = "A",
+               //     };
+               //
+               // }
 
                 return Page();
             }
