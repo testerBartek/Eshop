@@ -1,5 +1,8 @@
 # Eshop
 
+Hosted application:
+https://bartekshop.azurewebsites.net/
+
 Eshop created in the 
 * .NET Core 3.1 LTS
 * vuejs
